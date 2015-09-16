@@ -27,7 +27,7 @@ function emailMandrill (address, message, callback) {
 
 	mandrillClient.messages.send({
 		'message': {
-			'from_email': email,
+			'from_email': address,
 			'to':[{'email':'besartshyti@gmail.com'}],
 			'subject': 'Website contact form',
 			'text': message
