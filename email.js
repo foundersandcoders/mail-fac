@@ -28,8 +28,8 @@ function emailMandrill (address, message, callback) {
 	mandrillClient.messages.send({
 		'message': {
 			'from_email': address,
-			'to':[{'email':'besartshyti@gmail.com'}],
-			'subject': 'Website contact form',
+			'to':[{'email':'contact@foundersandcoders.org'}],
+			'subject': 'Founders and Coders website contact form',
 			'text': message
 		}
 	}, function (res) {
