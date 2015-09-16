@@ -11,6 +11,7 @@ server.route([
 	{
 	    method: 'POST',
 	    path: '/',
+        cors: true,
 	    handler: function (request, reply) {
 	        email.mandrill(request.payload.address, request.payload.message, function (error, result) {
 
@@ -27,6 +28,7 @@ server.route([
 	{
 	    method: 'GET',
 	    path: '/',
+        cors: true,
 	    handler: function (request, reply) {
 
 	    	return reply('Hello World');
