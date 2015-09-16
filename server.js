@@ -10,19 +10,29 @@ server.connection({
 
 server.route([
 	{
-	    method: 'POST',
-	    path: '/',
+	    method: 'GET',
+	    path: '/email',
 	    handler: function (request, reply) {
-	        email.mandrill(request.payload.address, request.payload.message, function (error, result) {
 
-	        	console.log('Done: ', arguments);
+	    	if (!request.query.body) {
 
-                if (error) {
-                    return reply().code(400);
-                } else {
-	        	    return reply('Success!');
-                }
-	        });
+	    		return reply('No data provided!').code(400);
+	    	} else {
+
+		    	var address = JSON.parse(request.query.body).address;
+		    	var message = JSON.parse(request.query.body).message;
+
+		        email.mandrill(address, message, function (error, result) {
+
+		        	console.log('Done: ', arguments);
+
+	                if (error) {
+	                    return reply('There was a problem with your email!').code(400);
+	                } else {
+		        	    return reply('Success!');
+	                }
+		        });
+	    	}
 	    }
 	},
 	{
