@@ -4,6 +4,7 @@ var server = new Hapi.Server();
 var email = require('./email.js');
 
 server.connection({
+	routes: { cors: true },
 	port: process.env.PORT || 1337
 })
 
@@ -11,7 +12,6 @@ server.route([
 	{
 	    method: 'POST',
 	    path: '/',
-        cors: true,
 	    handler: function (request, reply) {
 	        email.mandrill(request.payload.address, request.payload.message, function (error, result) {
 
@@ -28,7 +28,6 @@ server.route([
 	{
 	    method: 'GET',
 	    path: '/',
-        cors: true,
 	    handler: function (request, reply) {
 
 	    	return reply('Hello World');
