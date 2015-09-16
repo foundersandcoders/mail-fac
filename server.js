@@ -15,7 +15,12 @@ server.route([
 	        email.mandrill(request.payload.address, request.payload.message, function (error, result) {
 
 	        	console.log('Done: ', arguments);
-	        	reply('alright!');
+
+                if (error) {
+                    return reply().code(400);
+                } else {
+	        	    return reply('Success!');
+                }
 	        });
 	    }
 	},
@@ -23,7 +28,8 @@ server.route([
 	    method: 'GET',
 	    path: '/',
 	    handler: function (request, reply) {
-	    	reply('Hello World');
+
+	    	return reply('Hello World');
 	    }
 	}
 ]);
