@@ -13,7 +13,7 @@ module.exports = {
 
 function emailMailgun (address, message, callback) {
 
-	mg.sendText(address, 'contact@foundersandcoders.org', 'Website contact form', message, function (error) {
+	mailgunClient.sendText(address, 'contact@foundersandcoders.org', 'Website contact form', message, function (error) {
 
 		if(error) {
 			callback(error, undefined);
@@ -25,7 +25,7 @@ function emailMailgun (address, message, callback) {
 
 function emailMandrill (address, message, callback) {
 
-	m.messages.send({
+	mandrillClient.messages.send({
 		'message': {
 			'from_email': email,
 			'to':[{'email':'besartshyti@gmail.com'}],
