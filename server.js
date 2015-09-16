@@ -37,7 +37,7 @@ server.route([
 	},
 	{
 	    method: 'GET',
-	    path: '/',
+	    path: '/ping',
 	    handler: function (request, reply) {
 
 	    	return reply('Hello World');
