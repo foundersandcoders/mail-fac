@@ -25,13 +25,13 @@ function emailMailgun (address, message, callback) {
 	});
 }
 
-function emailMandrill (address, message, callback) {
+function emailMandrill (address, message, name, callback) {
 
 	mandrillClient.messages.send({
 		'message': {
 			'from_email': address,
 			'to':[{'email': EMAIL}],
-			'subject': 'FAC contact from ' + address,
+			'subject': 'Founders&Coders inquiry from ' + name,
 			'text': message
 		}
 	}, function (res) {
