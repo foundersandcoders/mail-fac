@@ -6,7 +6,7 @@ var email = require('./email.js');
 server.connection({
 	routes: { cors: true },
 	port: process.env.PORT || 1337
-})
+});
 
 server.route([
 	{
@@ -21,8 +21,9 @@ server.route([
 
 		    	var address = JSON.parse(request.query.body).address;
 		    	var message = JSON.parse(request.query.body).message;
+					var contactName = JSON.parse(request.query.body).contactName;
 
-		        email.mandrill(address, message, function (error, result) {
+		        email.mandrill(address, message, contactName, function (error, result) {
 
 		        	console.log('Done: ', arguments);
 
