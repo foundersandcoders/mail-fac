@@ -31,7 +31,7 @@ function emailMandrill (address, message, callback) {
 		'message': {
 			'from_email': address,
 			'to':[{'email': EMAIL}],
-			'subject': 'Founders and Coders website contact form',
+			'subject': 'FAC contact from ' + address,
 			'text': message
 		}
 	}, function (res) {
