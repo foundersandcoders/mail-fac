@@ -6,7 +6,7 @@ var mailgunClient = new Mailgun(process.env.MAILGUN);
 var Mandrill = require('mandrill-api');
 var mandrillClient = new Mandrill.Mandrill(process.env.MANDRILL);
 
-var EMAIL = process.env.EMAIL || 'oturnermajor@gmail.com';
+var EMAIL = process.env.EMAIL || 'besartshyti@gmail.com';
 
 module.exports = {
 	mailgun: emailMailgun,
