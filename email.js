@@ -6,17 +6,16 @@ var mailgunClient = new Mailgun(process.env.MAILGUN);
 var Mandrill = require('mandrill-api');
 var mandrillClient = new Mandrill.Mandrill(process.env.MANDRILL);
 
-var EMAIL = process.env.EMAIL || 'besartshyti@gmail.com';
+var EMAIL = process.env.EMAIL || 'oturnermajor@gmail.com';
 
 module.exports = {
 	mailgun: emailMailgun,
 	mandrill: emailMandrill
 };
 
-function emailMailgun (address, message, callback) {
-
-	mailgunClient.sendText(address, EMAIL, 'Website contact form', message, function (error) {
-
+function emailMailgun (address, message, name, callback) {
+	var subject = 'Founders&Coders inquiry from ' + name;
+	mailgunClient.sendText(address, EMAIL, subject, message, function (error) {
 		if(error) {
 			callback(error, undefined);
 		} else {
