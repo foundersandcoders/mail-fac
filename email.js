@@ -13,10 +13,9 @@ module.exports = {
 	mandrill: emailMandrill
 };
 
-function emailMailgun (address, message, callback) {
-
-	mailgunClient.sendText(address, EMAIL, 'Website contact form', message, function (error) {
-
+function emailMailgun (address, message, name, callback) {
+	var subject = 'Founders&Coders inquiry from ' + name;
+	mailgunClient.sendText(address, EMAIL, subject, message, function (error) {
 		if(error) {
 			callback(error, undefined);
 		} else {
